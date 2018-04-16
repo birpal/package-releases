@@ -1,0 +1,25 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - "8"
+stages:
+  - test
+  - build
+jobs:
+  include:
+    - stage: test
+      script: yarn lint
+    - stage: build
+      script: yarn build
+    - stage: publish
+      if: branch = master
+      script: npm run release
+      
+      before_install: .travis/before_install.sh
+git:
+  depth: 1

@@ -1,0 +1,29 @@
+{
+  "name": "birpal",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "build": "lerna run prePublish",
+    "release:pre": "lerna-semantic-release pre",
+    "release:post": "lerna-semantic-release post",
+    "release:perform": "lerna-semantic-release perform",
+    "release": "npm run release:pre && npm run release:post && npm run release:perform",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "commit": "git-cz"
+  },
+  "dependencies": {
+    "lerna": "^2.10.1"
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-lerna-changelog": "^1.2.1",
+    "lerna-semantic-release": "^9.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  }
+}
